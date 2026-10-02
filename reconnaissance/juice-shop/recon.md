@@ -1,34 +1,24 @@
-# OWASP Juice Shop Reconnaissance
+cat >> reconnaissance/juice-shop/recon.md <<'EOF'
 
-## Target
+## FTP Directory Discovery
 
-http://127.0.0.1:3000
+The /ftp endpoint exposes a directory listing.
 
-## Scope
+Observed files:
 
-Local laboratory environment owned/controlled by me.
+- quarantine/
+- acquisitions.md
+- announcement_encrypted.md
+- coupons_2013.md.bak
+- eastere.gg
+- encrypt.pyc
+- incident-support.kdbx
+- legal.md
+- package-lock.json.bak
+- package.json.bak
+- suspicious_errors.yml
 
-## Port Scan
-
-Command:
-
-nmap -sC -sV -p 3000 127.0.0.1
-
-## HTTP Inspection
-
-Commands:
-
-curl -I http://127.0.0.1:3000
-curl -v http://127.0.0.1:3000/
-
-## Findings
-
-- Port:
-- Service:
-- HTTP server:
-- Interesting headers:
-- Interesting files/paths:
-
-## Next Step
-
-Begin authorized web-application testing against the local Juice Shop instance.
+Observation:
+The application exposes multiple files and backup artifacts through a browsable directory.
+Further investigation should determine which files are intentionally vulnerable training targets and whether sensitive information is exposed.
+EOF
