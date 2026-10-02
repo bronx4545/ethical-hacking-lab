@@ -1,24 +1,26 @@
-cat >> reconnaissance/juice-shop/recon.md <<'EOF'
+## FTP File Access Controls
 
-## FTP Directory Discovery
+### legal.md
 
-The /ftp endpoint exposes a directory listing.
+GET /ftp/legal.md
 
-Observed files:
+Result:
+HTTP 200 OK
 
-- quarantine/
-- acquisitions.md
-- announcement_encrypted.md
-- coupons_2013.md.bak
-- eastere.gg
-- encrypt.pyc
-- incident-support.kdbx
-- legal.md
-- package-lock.json.bak
-- package.json.bak
-- suspicious_errors.yml
+The file is directly accessible.
+
+### package.json.bak
+
+GET /ftp/package.json.bak
+
+Result:
+File retrieval rejected.
+
+Server response:
+"Only .md and .pdf files are allowed!"
 
 Observation:
-The application exposes multiple files and backup artifacts through a browsable directory.
-Further investigation should determine which files are intentionally vulnerable training targets and whether sensitive information is exposed.
-EOF
+The application exposes non-allowed files in the directory listing but applies an extension restriction when attempting to retrieve them.
+
+Status:
+Access-control behavior identified; bypassability has not yet been tested.
