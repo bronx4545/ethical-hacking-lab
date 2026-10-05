@@ -45,3 +45,21 @@ the privileges of the application process.
 ## Scope
 
 127.0.0.1:5002 — local WebSploit training environment.
+## Verified Execution Context
+
+The injected `id` command executed successfully through the web application.
+
+HTTP response:
+
+uid=0(root) gid=0(root) groups=0(root)
+
+Independent container check:
+
+docker exec shell-inject id
+
+Result:
+
+uid=0(root) gid=0(root) groups=0(root)
+
+Therefore, the vulnerable application executes the injected command as
+root inside the training container.
