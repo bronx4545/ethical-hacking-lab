@@ -1,0 +1,15 @@
+# Lab secrets / session material
+hydra-cookies.txt
+public-key-response.html
+public.pem
+
+# Temporary PoC files
+test.html
+upload-test.txt
+
+# Local tools / wordlists
+wordlist.txt
+h4cker/
+
+# External lab source
+websploit/
